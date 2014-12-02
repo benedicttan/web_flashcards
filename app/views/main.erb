@@ -1,0 +1,34 @@
+<% if !@message.nil? %>
+  <h2 style=color:red><%= @message %></h2>
+  </br>
+<% end %>
+
+<h2>Welcome to the member's area</h2>
+<h3><a href="/logout">Log out</a></h3>
+</br>
+
+<form method=get action="/newround">
+  Start new round
+  <select name=deck>
+  <% Deck.all.each do |deck| %>
+      <option value="<%= deck.id %>"><%= deck.title %></option>
+    <% end %>
+  </select>
+  <input type=submit value=Go>
+</form>
+
+<h3>Your stats</h3>
+<table border=1>
+  <tr>
+    <td>Round #</td>
+    <td>Subject</td>
+    <td>% correct</td>
+  </tr>
+  <% rounds.each do |round| %>
+  <tr>
+    <td><%= round.id %></td>
+    <td><%= round.deck.title %></td>
+    <td><%= round.correctness %>%</td>
+  </tr>
+  <% end %>
+</table>

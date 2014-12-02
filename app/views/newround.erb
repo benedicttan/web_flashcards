@@ -1,0 +1,20 @@
+<h2>New round:</h2>
+<table border=1 width=60%>
+  <form method=post action="/check">
+  <tr>
+    <td width=50%>Description</td>
+    <td>Guess</td>
+  </tr>
+  <% i = 0 %>
+  <% @round.guesses.each do |guess| %>
+    <tr>
+      <td><%= guess.card.description %></td>
+      <td><input type=text name=guess[<%= i %>]></td>
+    </tr>
+    <% i += 1 %>
+  <% end %>
+    <tr>
+      <td></td>
+      <td><input type=submit value="Check answers"></td>
+  </form>
+</table>
